@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdio>
+#include <filesystem>
 using namespace std;
 
 class Cars
@@ -11,13 +13,15 @@ private:
 	string name;
 	char choose;
 	double value;
-	char exit_Program;
+	string line;
 	
 public:
 	Cars();
 	~Cars();
 	void menu();
 	void add_Cars();
-	//void Show_Cars();
+	void Show_Cars();
+	//bool reset(fstream& file);
+	void delete_Cars();
 };
 
