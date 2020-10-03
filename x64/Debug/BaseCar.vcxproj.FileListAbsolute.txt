@@ -1,0 +1,2 @@
+D:\Projekty\BaseCar\Base\x64\Debug\BaseCar.exe
+D:\Projekty\BaseCar\Base\x64\Debug\BaseCar.pdb
