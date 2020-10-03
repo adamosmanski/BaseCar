@@ -17,7 +17,7 @@ void Cars::menu()
 	cout << "Base vehicle !" << "\n";
 	cout << "Choose option:" << "\n\n";
 	cout << "1. Show Cars." << "\n";
-	cout << "2. Show Motors." << "\n";
+	cout << "2. Delete cars." << "\n";
 	cout << "3. Add Vehicle." << "\n";
 	cout << "4. Exit\n";
 
@@ -25,9 +25,11 @@ void Cars::menu()
 	switch (this->choose)
 	{
 	case '1':
-		//this->Show_Cars();
+		this->Show_Cars();
 		break;
 	case '2':
+		this->delete_Cars();
+		cout << "\n\n\n" << "Wyczyszczono zawartosc" << "\n\n\n";
 		break;
 	case '3':
 		this->add_Cars();
@@ -53,9 +55,9 @@ void Cars::add_Cars()
 		if (file.good() == true)
 		{
 
-			file << "Wartoœæ: " << this->value << "\n";
-			file << "Marka: " << this->mark << "\n";
-			file << "W³aœciciel: " << this->name << "\n";
+			file << "Value: " << this->value << "\n";
+			file << "Mark: " << this->mark << "\n";
+			file << "Name: " << this->name << "\n";
 		}
 		else
 		{
@@ -68,4 +70,32 @@ void Cars::add_Cars()
 		system("cls");
 		return this->menu();
 	}
+}
+
+void Cars::Show_Cars()
+{
+	ifstream reading("cars.txt", ios::in);
+	if (reading.good() == true)
+	{
+		while (!reading.eof())
+		{
+			getline(reading, line);
+			cout << line << "\n";
+		}
+		reading.close();
+	}
+	else
+	{
+		cout << "Error!" << "\n";
+	}
+	cout << "\n\n";
+	return this->menu();
+}
+
+void Cars::delete_Cars()
+{
+	ofstream file;
+	file.open("cars.txt");
+	file.close();
+	return this->menu();
 }
